@@ -12,6 +12,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
+// add public as defualt static folder
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Setup winston
 winston.configure({
     transports: [
