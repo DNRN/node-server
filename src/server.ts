@@ -22,7 +22,7 @@ winston.configure({
     ]
 });
 
-app.get('/', (req, res) => res.send('Welcome to Express template in TypeScript!'));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
 app.get('/oauth2callback', (req, res) => {
     winston.info("welcome!");
     return res.json("callbacked");
