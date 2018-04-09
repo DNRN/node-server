@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node build/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "tsc && pm2 restart test.entropyfox.com",
     "postinstall": "tsc"
   },
   "author": "Dennis Christensen",
