@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node build/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "tsc && npm html && pm2 restart test.entropyfox.com",
+    "deploy": "tsc && pm2 restart test.entropyfox.com",
     "html": "copyfiles -u 1 src/public/**/*.html build/",    
     "postinstall": "tsc"
   },
