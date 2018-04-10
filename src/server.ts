@@ -43,8 +43,18 @@ app.get('/oauth2callback', async (req, res) => {
 
 app.get('/g/accounts', async (req, res) => {
     try {
-        const accounts = await GoogleAnalytisApi.getAccounts(token.access_token);
-        return res.json(accounts);
+        const response = await GoogleAnalytisApi.getAccounts(token.access_token);
+        if (response.items && response.items.length > 0) {
+            const accounts = (<Array<any>>response.items.webProperties).map(wp => {
+                return {
+                    'name': wp.name,
+                    'id': wp.id
+                };
+            })
+            return res.json(accounts);
+        } else {
+            return res.json([]);
+        }       
     } catch (error) {
         return res.json(error);
     }
