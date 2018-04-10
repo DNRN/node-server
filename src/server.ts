@@ -43,7 +43,7 @@ app.get('/oauth2callback', async (req, res) => {
 
 app.get('/g/accounts', async (req, res) => {
     try {
-        const accounts = await GoogleAnalytisApi.getAccounts(token);
+        const accounts = await GoogleAnalytisApi.getAccounts(token.access_token);
         return res.json(accounts);
     } catch (error) {
         return res.json(error);
