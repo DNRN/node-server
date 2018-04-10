@@ -14,7 +14,6 @@ export class GoogeApi {
                 // Now tokens contains an access_token and an optional refresh_token. Save them.
                 if (!err) {
                     oauth2Client.setCredentials(tokens);
-                    console.log(tokens);
                     resolve(tokens);
                 } else {
                     reject(err);
@@ -26,12 +25,12 @@ export class GoogeApi {
     public static AnalyticsUrl(): string {
         // generate a url that asks permissions for analytics scopes
         const scopes = [
-            'https://www.googleapis.com/auth/analytics'
+            'https://www.googleapis.com/auth/analytics.readonly'
         ];
 
         return oauth2Client.generateAuthUrl({
             // 'online' (default) or 'offline' (gets refresh_token)
-            access_type: 'offline',
+            // access_type: 'offline',
 
             // If you only need one scope you can pass it as a string
             scope: scopes,
