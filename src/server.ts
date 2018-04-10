@@ -29,7 +29,7 @@ winston.configure({
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
 app.get('/g', (req, res) => {
     const url = GoogeApi.AnalyticsUrl();
-    return res.json(url);
+    return res.redirect(url);
 });
 app.get('/oauth2callback', async (req, res) => {
     try {
