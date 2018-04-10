@@ -44,17 +44,18 @@ app.get('/oauth2callback', async (req, res) => {
 app.get('/g/accounts', async (req, res) => {
     try {
         const response = await GoogleAnalytisApi.getAccounts(token.access_token);
-        if (response.items && response.items.length > 0) {
-            const accounts = (<Array<any>>response.items.webProperties).map(wp => {
-                return {
-                    'name': wp.name,
-                    'id': wp.id
-                };
-            })
-            return res.json(accounts);
-        } else {
-            return res.json([]);
-        }       
+        let accounts: Array<{name: string, id: string}> = [];
+        if (response.items && response.items.length > 0) {            
+            (<Array<any>>response.items).forEach(item => {
+                accounts.push(...(<Array<any>>item.webProperties).map(wp => {
+                    return {
+                        'name': wp.name,
+                        'id': wp.id
+                    };
+                }));
+            });
+        }
+        return res.json(accounts); 
     } catch (error) {
         return res.json(error);
     }
