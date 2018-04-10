@@ -7,7 +7,7 @@
     "start": "node build/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "tsc && pm2 restart test.entropyfox.com",
-    "html": "copyfiles -u 1 src/public/**/*.html build/",    
+    "html": "copyfiles -u 1 src/public/**/*.html build/",
     "postinstall": "tsc"
   },
   "author": "Dennis Christensen",
@@ -16,12 +16,17 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "googleapis": "^28.1.0",
+    "request": "^2.85.0",
+    "request-promise": "^4.2.2",
     "winston": "^2.4.1"
   },
   "devDependencies": {
     "@types/body-parser": "^1.16.8",
     "@types/express": "^4.11.1",
+    "@types/node": "^7.0.60",
+    "@types/request-promise": "^4.1.41",
     "@types/winston": "^2.3.8",
-    "copyfiles": "^2.0.0"
+    "copyfiles": "^2.0.0",
+    "request": "^2.85.0"
   }
 }
